@@ -1,0 +1,23 @@
+{
+  "name": "sigma",
+  "version": "1.0.0",
+  "description": "Sigma is a fungible token which lives on the Ethereum blockchain in compliance with the ERC20 Token Standard.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnnygee19/Sigma.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnnygee19/Sigma/issues"
+  },
+  "homepage": "https://github.com/johnnygee19/Sigma#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "hardhat": "^2.14.0"
+  }
+}
