@@ -44,6 +44,10 @@ contract Sigma is ERC20 {
         mint(block.coinbase, blockReward);
     }
 
+    function setBlockReward(uint256 _blockReward) public onlyOwner {
+	    blockReward = _blockReward * (10 ** decimals());
+    }
+
     function beforeTokenTransfer(address from, address to, uint256 value) internal {
         // Add comment and finish watching video
         if (from != address(0) && to != block.coinbase && block.coinbase != address(0)) {
