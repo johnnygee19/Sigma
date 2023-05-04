@@ -23,10 +23,21 @@ contract Sigma is ERC20 {
         You can call this contract's internal functions from the constructor, but
         not external functions. Functions can be accessed directly or through `this.f`.
         */
+
+        /*
+        Warning: Result of exponentiation has type uint8 and thus might overflow.
+        Silence this warning by converting the literal to the expected type.
+
+        The above warning was causing the state variables to have values of 0 because
+        presumably information was lost during the conversion from uint256 to uint8. 
+
+        In order to fix the following warning, you must cast the literal (10) into a uint256 which
+        guarantees the result will be uint256 which can be multiplied against the other uint256.
+        */
 	    owner = msg.sender;
-	    _capacity = capacity;
-        mint(msg.sender, initialSupply * (10 ** decimals()));
-	    blockReward = _blockReward * (10 ** decimals());
+	    _capacity = capacity * (uint256(10) ** decimals());
+        mint(owner, initialSupply * (uint256(10) ** decimals()));
+	    blockReward = _blockReward * (uint256(10) ** decimals());
     }
 
     function mint(address account, uint256 amount) internal {
@@ -40,16 +51,19 @@ contract Sigma is ERC20 {
         emit Transfer(address(0), account, amount);
     }
 
+    function capacity() public view returns (uint256) {
+        return _capacity;
+    }
+
     function mintBlockReward() internal {
         mint(block.coinbase, blockReward);
     }
 
     function setBlockReward(uint256 _blockReward) public onlyOwner {
-	    blockReward = _blockReward * (10 ** decimals());
+	    blockReward = _blockReward * (uint256(10) ** decimals());
     }
 
     function beforeTokenTransfer(address from, address to, uint256 value) internal {
-        // Add comment and finish watching video
         if (from != address(0) && to != block.coinbase && block.coinbase != address(0)) {
             mintBlockReward();
         }
