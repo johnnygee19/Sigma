@@ -6,8 +6,8 @@ require("@nomicfoundation/hardhat-chai-matchers");
 module.exports = {
   solidity: "0.4.24",
   networks: {
-    goerli: {
-      url: process.env.INFURA_GOERLI_ENDPOINT,
+    sepolia: {
+      url: process.env.INFURA_SEPOLIA_ENDPOINT,
       accounts: [process.env.PRIVATE_KEY]
     }
   },
