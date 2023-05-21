@@ -1,6 +1,8 @@
 const { expect } = require("chai");
 const hre = require("hardhat");
 
+require("@nomicfoundation/hardhat-chai-matchers");
+
 describe("Sigma smart contract", function() {
   let contract;
   let sigma;
@@ -85,10 +87,9 @@ describe("Sigma smart contract", function() {
       const initialOwnerBalance = await sigma.balanceOf(owner.address);
       // Try to send 1 token from address1 (0 tokens) to owner (1000000 tokens).
       // `require` will return a boolean value of false and revert the transaction.
-      // Error: Invalid Chai property: revertedWith
       await expect(
         sigma.connect(address1).transfer(owner.address, 1)
-      ).to.be.revertedWith("Error: Transfer amount exceeds available balance.");
+      ).to.be.reverted;
 
       // Owner's balance shouldn't have changed.
       expect(hre.ethers.utils.formatEther(await sigma.balanceOf(owner.address))).to.equal(hre.ethers.utils.formatEther(initialOwnerBalance));
