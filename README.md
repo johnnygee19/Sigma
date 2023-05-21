@@ -43,6 +43,14 @@ npm install dotenv --save
 npx hardhat compile
 ```
 
+```bash
+npx hardhat test
+```
+
+```bash
+npx hardhat run --network sepolia scripts/deploy.js
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
