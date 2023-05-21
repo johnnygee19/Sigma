@@ -32,6 +32,10 @@ npm i --save-dev "hardhat@^2.11.1" "@nomicfoundation/hardhat-toolbox@^1.0.1"
 ```
 
 ```bash
+npm install --save-dev @nomicfoundation/hardhat-chai-matchers
+```
+
+```bash
 npx hardhat compile
 ```
 
