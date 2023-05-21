@@ -36,6 +36,10 @@ npm install --save-dev @nomicfoundation/hardhat-chai-matchers
 ```
 
 ```bash
+npm install dotenv --save
+```
+
+```bash
 npx hardhat compile
 ```
 
